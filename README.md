@@ -1,5 +1,5 @@
 # lt-LocationTracker
-##This contains the docker-compose.yaml to run all the microservices
+##This contains the docker-compose.yaml to run all the microservices..
 
 ##RUN IN SEQUENCE for RUNNING DOCKERS LOCALLY (WITHOUT YAML):
 1. docker run -d -p 8161:8161 -p 61616:61616 --name myqueue --network locationtracker mooneshkachroo/lt-activemq:0.0.1-RELEASE
