@@ -1,0 +1,61 @@
+version: '3'
+
+services:
+  lt-activemq:
+    image: mooneshkachroo/lt-activemq:0.0.1-RELEASE
+    container_name: myqueue
+    ports:
+      - '8161:8161'
+    networks:
+      - locationtracker
+      
+  lt-position-simulator:
+    image: mooneshkachroo/lt-position-simulator:0.0.1-RELEASE
+    networks:
+      - locationtracker
+    environment:
+      - spring.activemq.broker-url=tcp://myqueue:61616
+      - fleetman.position.queue=positionQueue 
+ 
+  lt-mongo:
+    image: mongo:3.6.5-jessie
+    container_name: mongodb
+    networks:
+      - locationtracker
+    ports:
+      - '27017:27017'
+      
+
+  lt-position-tracker:
+    image: mooneshkachroo/lt-position-tracker:0.0.1-RELEASE
+    container_name: positiontracker    
+    networks:
+      - locationtracker
+    ports:
+      - '8090:8090'
+    environment:
+      - spring.activemq.broker-url=tcp://myqueue:61616
+      - fleetman.position.queue=positionQueue
+      - spring.data.mongodb.host=mongodb
+      
+  lt-api-gateway:
+    image: mooneshkachroo/lt-api-gateway:0.0.1-RELEASE
+    container_name: apigateway
+    ports:
+      - '8080:8080'
+    networks:
+      - locationtracker
+    environment:
+      - position-tracker-url=http://positiontracker:8090
+      
+  lt-webapp:
+    image: mooneshkachroo/lt-webapp:0.0.1-RELEASE
+    ports:
+      - '80:80'
+    networks:
+      - locationtracker
+    environment:
+      - SPRING_PROFILES_ACTIVE=localhost
+
+networks:
+   locationtracker:
