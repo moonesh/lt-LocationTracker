@@ -1,8 +1,11 @@
 # lt-LocationTracker
 ##This contains the docker-compose.yaml to run all the microservices..
-## Go to the directory with yaml file and  > docker-compose up
+Go to the directory with yaml file and  > docker-compose up
 
-##RUN IN SEQUENCE for RUNNING DOCKERS LOCALLY (WITHOUT YAML):
+
+##If you want to run DOCKERS locally (WITHOUT using docker-compose.yaml ):
+
+
 docker run -d -p 8161:8161 -p 61616:61616 --name myqueue --network locationtracker mooneshkachroo/lt-activemq:0.0.1-RELEASE
 
 docker run -d --network locationtracker --env spring.activemq.broker-url=tcp://myqueue:61616 --env fleetman.position.queue=positionQueue mooneshkachroo/lt-position-simulator:0.0.1-RELEASE
