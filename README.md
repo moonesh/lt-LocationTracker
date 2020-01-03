@@ -1,7 +1,6 @@
 # lt-LocationTracker
 This application contains a set of microservices and can be run in 3 ways as explained below:
 
-
 ## 1. DOCKER COMPOSE: This contains the docker-compose.yaml to run all the microservices..
 Go to the directory with yaml file and  > docker-compose up
 
