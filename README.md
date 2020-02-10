@@ -35,10 +35,10 @@ docker run -d --network locationtracker -p 80:80 --env SPRING_PROFILES_ACTIVE=lo
  - Scheduler: Physically schedules pods across multiple nodes - basis the configurations provided (like CPU,Memory,Instance Type etc)
  - etcd : Distributed ligthweight Key-Value Db. Containing current state of Clusterat any point of time. It is Single Source of Truth
  - Controller Manager : Responsible for health of entire cluster. Actually 4 backing cotrollers -
-  - Node Controller
-  - Replication Controller
-  - Endpoint Controller
-  - Service Account and Token Controller
+   - Node Controller
+   - Replication Controller
+   - Endpoint Controller
+   - Service Account and Token Controller
  
  WORKER NODE: 
  - Kubelet: Primary Node Agent that runs on each Worker Node. It looks at the Pod Spec(YAML) and ensures that cotainers described are healthy and running.  
