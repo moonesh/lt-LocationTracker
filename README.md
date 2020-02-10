@@ -25,5 +25,7 @@ docker run -d --network locationtracker -p 80:80 --env SPRING_PROFILES_ACTIVE=lo
 2. The folder yaml-files contains all the yaml documents requiered to build pods/servcies.
 3. Ignore test.yaml (that was only for testing a piece of microservices)
 
+## 3. Architecture of K8S:
+
 
 
